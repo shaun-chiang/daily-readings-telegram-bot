@@ -12,7 +12,8 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
                     level=logging.INFO)
 
 logger = logging.getLogger(__name__)
-TOKEN = "INSERT_TOKEN_HERE"
+TOKEN = os.environ.get('TELEGRAM_BOT_TOKEN', "INSERT_TOKEN_HERE")
+URL = os.environ.get('WEBHOOK_URL', "INSERT_URL_HERE")
 
 class Reading:
     def __init__(self, title, link, skippable):
@@ -145,7 +146,8 @@ def main():
     updater.start_webhook(listen="0.0.0.0",
                           port=int(PORT),
                           url_path=TOKEN)
-    updater.bot.setWebhook('https://yourherokuappname.herokuapp.com/' + TOKEN)
+    # replace the below url with your own                      
+    updater.bot.setWebhook(WEBHOOK_URL + TOKEN)
 
     # Block until you press Ctrl-C or the process receives SIGINT, SIGTERM or
     # SIGABRT. This should be used most of the time, since start_polling() is
