@@ -13,7 +13,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 logger = logging.getLogger(__name__)
 TOKEN = os.environ.get('TELEGRAM_BOT_TOKEN', "INSERT_TOKEN_HERE")
-URL = os.environ.get('WEBHOOK_URL', "INSERT_URL_HERE")
+WEBHOOK_URL = os.environ.get('WEBHOOK_URL', "INSERT_URL_HERE")
 
 class Reading:
     def __init__(self, title, link, skippable):
